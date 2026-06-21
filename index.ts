@@ -53,3 +53,12 @@ const logBrtMsg = (
 };
 
 logBrtMsg(isBirthdayData, userNameData, 40);
+
+const test: null = null; //OKAY
+const test1: any = null; //OKAY
+const test2: string = null; //BAD
+const test3: number = null; //BAD
+
+const test4: undefined = undefined; //OKAY
+const test5: any = undefined; //OKAY
+const test6: string = undefined; //BAD
