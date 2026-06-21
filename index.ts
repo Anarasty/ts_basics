@@ -54,6 +54,12 @@ const userData = {
   },
 };
 
+const userDataTuple: [boolean, number, string] = [true, 40, "John"];
+
+const res = userDataTuple.map((t) => `${t} - data`);
+
+const [bthd, age, userName] = userDataTuple;
+
 const createError = (msg: string) => {
   throw new Error(msg);
 };
