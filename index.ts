@@ -41,60 +41,69 @@
 // const test5: any = undefined; //OKAY
 // const test6: string = undefined; //BAD
 
-const isBirthdayData: boolean = true;
-let ageData: number = 40;
-const userNameData: string = "John";
+// const isBirthdayData: boolean = true;
+// let ageData: number = 40;
+// const userNameData: string = "John";
 
-const userData = {
-  isBirthdayData: true,
-  ageData: 40,
-  userNameData: "John",
-  messages: {
-    error: "Error",
-  },
-};
+// const userData = {
+//   isBirthdayData: true,
+//   ageData: 40,
+//   userNameData: "John",
+//   messages: {
+//     error: "Error",
+//   },
+// };
 
-const userDataTuple: [boolean, number, string] = [true, 40, "John"];
+// const userDataTuple: [boolean, number, string] = [true, 40, "John"];
 
-const res = userDataTuple.map((t) => `${t} - data`);
+// const res = userDataTuple.map((t) => `${t} - data`);
 
-const [bthd, age, userName] = userDataTuple;
+// const [bthd, age, userName] = userDataTuple;
 
-const createError = (msg: string) => {
-  throw new Error(msg);
-};
+// const createError = (msg: string) => {
+//   throw new Error(msg);
+// };
 
-const logBrtMsg = ({
-  isBirthdayData,
-  userNameData,
-  ageData,
-  messages: { error },
-}: {
-  isBirthdayData: boolean;
-  userNameData: string;
-  ageData: number;
-  messages: { error: string };
-}): string => {
-  if (isBirthdayData) {
-    return `Happy Birthday, ${userNameData.toUpperCase()}, age: ${ageData + 1}`;
-  } else {
-    return createError(error);
-  }
-};
+// const logBrtMsg = ({
+//   isBirthdayData,
+//   userNameData,
+//   ageData,
+//   messages: { error },
+// }: {
+//   isBirthdayData: boolean;
+//   userNameData: string;
+//   ageData: number;
+//   messages: { error: string };
+// }): string => {
+//   if (isBirthdayData) {
+//     return `Happy Birthday, ${userNameData.toUpperCase()}, age: ${ageData + 1}`;
+//   } else {
+//     return createError(error);
+//   }
+// };
 
-console.log(logBrtMsg(userData));
+// console.log(logBrtMsg(userData));
 
-const departments: string[] = ["dev", "design", "marketing"];
+// const departments: string[] = ["dev", "design", "marketing"];
 
-const department = departments[0];
+// const department = departments[0];
 
-// departments.push(5) //!ERROR
-const report = departments
-  .filter((d: string) => d !== "dev")
-  .map((d: string) => `${d} - done`);
+// // departments.push(5) //!ERROR
+// const report = departments
+//   .filter((d: string) => d !== "dev")
+//   .map((d: string) => `${d} - done`);
 
-const nums: number[][] = [
-  //!Matrix
-  [3, 5, 6],
-  [4, 7, 8],
-];
+// const nums: number[][] = [
+//   //!Matrix
+//   [3, 5, 6],
+//   [4, 7, 8],
+// ];
+
+const message: string | number = 5;
+const messages: string[] | number[] = ["a", "b"];
+
+function printMsg(msg: string | number): void {
+  // console.log()
+}
+printMsg(3);
+printMsg("ddd");
