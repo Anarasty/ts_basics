@@ -36,29 +36,44 @@ const isBirthdayData: boolean = true;
 let ageData: number = 40;
 const userNameData: string = "John";
 
+const userData = {
+  isBirthdayData: true,
+  ageData: 40,
+  userNameData: "John",
+  messages: {
+    error: "Error",
+  },
+};
+
 const createError = (msg: string) => {
   throw new Error(msg);
 };
 
-const logBrtMsg = (
-  isBirthday: boolean,
-  userName: string,
-  age: number
-): string => {
-  if (isBirthday) {
-    return `Happy Birthday, ${userName.toUpperCase()}, age: ${age + 1}`;
+const logBrtMsg = ({
+  isBirthdayData,
+  userNameData,
+  ageData,
+  messages: { error },
+}: {
+  isBirthdayData: boolean;
+  userNameData: string;
+  ageData: number;
+  messages: { error: string };
+}): string => {
+  if (isBirthdayData) {
+    return `Happy Birthday, ${userNameData.toUpperCase()}, age: ${ageData + 1}`;
   } else {
-    return createError("Error");
+    return createError(error);
   }
 };
 
-logBrtMsg(isBirthdayData, userNameData, 40);
+console.log(logBrtMsg(userData));
 
-const test: null = null; //OKAY
-const test1: any = null; //OKAY
-const test2: string = null; //BAD
-const test3: number = null; //BAD
+// const test: null = null; //OKAY
+// const test1: any = null; //OKAY
+// const test2: string = null; //BAD
+// const test3: number = null; //BAD
 
-const test4: undefined = undefined; //OKAY
-const test5: any = undefined; //OKAY
-const test6: string = undefined; //BAD
+// const test4: undefined = undefined; //OKAY
+// const test5: any = undefined; //OKAY
+// const test6: string = undefined; //BAD
