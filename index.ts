@@ -32,6 +32,15 @@
 // } = JSON.parse(userData);
 // console.log(userObj.smt());
 
+// const test: null = null; //OKAY
+// const test1: any = null; //OKAY
+// const test2: string = null; //BAD
+// const test3: number = null; //BAD
+
+// const test4: undefined = undefined; //OKAY
+// const test5: any = undefined; //OKAY
+// const test6: string = undefined; //BAD
+
 const isBirthdayData: boolean = true;
 let ageData: number = 40;
 const userNameData: string = "John";
@@ -69,11 +78,17 @@ const logBrtMsg = ({
 
 console.log(logBrtMsg(userData));
 
-// const test: null = null; //OKAY
-// const test1: any = null; //OKAY
-// const test2: string = null; //BAD
-// const test3: number = null; //BAD
+const departments: string[] = ["dev", "design", "marketing"];
 
-// const test4: undefined = undefined; //OKAY
-// const test5: any = undefined; //OKAY
-// const test6: string = undefined; //BAD
+const department = departments[0];
+
+// departments.push(5) //!ERROR
+const report = departments
+  .filter((d: string) => d !== "dev")
+  .map((d: string) => `${d} - done`);
+
+const nums: number[][] = [
+  //!Matrix
+  [3, 5, 6],
+  [4, 7, 8],
+];
