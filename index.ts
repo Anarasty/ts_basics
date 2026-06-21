@@ -19,18 +19,26 @@
 //   }
 // }
 
-let salary; //this type would be ANY
-salary = 300;
+// let salary; //this type would be ANY
+// salary = 300;
 
-const userData =
-  '{"isBirthdayData" : true, "ageData": 40, "userNameData": "John"}';
+// const userData =
+//   '{"isBirthdayData" : true, "ageData": 40, "userNameData": "John"}';
 
-const userObj: {
-  isBirthday: boolean;
-  userName: string;
-  age: number;
-} = JSON.parse(userData);
-console.log(userObj.smt());
+// const userObj: {
+//   isBirthday: boolean;
+//   userName: string;
+//   age: number;
+// } = JSON.parse(userData);
+// console.log(userObj.smt());
+
+const isBirthdayData: boolean = true;
+let ageData: number = 40;
+const userNameData: string = "John";
+
+const createError = (msg: string) => {
+  throw new Error(msg);
+};
 
 const logBrtMsg = (
   isBirthday: boolean,
@@ -40,7 +48,7 @@ const logBrtMsg = (
   if (isBirthday) {
     return `Happy Birthday, ${userName.toUpperCase()}, age: ${age + 1}`;
   } else {
-    return "Error";
+    return createError("Error");
   }
 };
 
