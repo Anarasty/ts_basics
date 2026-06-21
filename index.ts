@@ -7,12 +7,28 @@
 // number: 0, 1, 0.5, 22, -10, 4e10
 // boolean: true, false
 
-const isBirthday: boolean = true;
-let age: number;
-const userName = "John";
+const isBirthdayData: boolean = true;
+let ageData: number = 40;
+const userNameData: string = "John";
 
-age = 40;
+// function logBrtMsg(isBirthday: boolean, userName: string, age: number): string {
+//   if (isBirthday) {
+//     return `Happy Birthday, ${userName.toUpperCase()}, age: ${age + 1}`;
+//   } else {
+//     return "Error";
+//   }
+// }
 
-if (isBirthday) {
-  console.log(`Happy Birthday, ${userName.toUpperCase()}, age - ${age + 1}`);
-}
+const logBrtMsg = (
+  isBirthday: boolean,
+  userName: string,
+  age: number
+): string => {
+  if (isBirthday) {
+    return `Happy Birthday, ${userName.toUpperCase()}, age: ${age + 1}`;
+  } else {
+    return "Error";
+  }
+};
+
+logBrtMsg(isBirthdayData, userNameData, 40);
