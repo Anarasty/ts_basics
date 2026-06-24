@@ -152,46 +152,73 @@ let msg: "Hello" = "Hello";
 
 msg = "Hello";
 
-type Config = { protocol: "http" | "https"; port: 3000 | 3001 };
-type Role = { role: string };
-type ConfigWithRole = Config & Role;
+// type Config = { protocol: "http" | "https"; port: 3000 | 3001 };
+interface Config {
+  protocol: "http" | "https";
+  port: 3000 | 3001;
+  log: (msg: string) => void;
+}
+// type Role = { role: string };
+// type ConfigWithRole = Config & Role;
+
+interface Role {
+  role: string;
+}
+
+interface ConfigWithRole extends Config, Role {}
 
 const serverConfig: ConfigWithRole = {
   protocol: "https",
   port: 3001,
   role: "admin",
+  log: (msg: string): void => console.log(msg),
 };
 
-const backupConfig: ConfigWithRole = {
-  protocol: "http",
-  port: 3000,
-  role: "sysadmin",
-};
+// const backupConfig: ConfigWithRole = {
+//   protocol: "http",
+//   port: 3000,
+//   role: "sysadmin",
+// };
 
-type StartFunction = (protocol: "http" | "https", port: 3000 | 3001) => string;
+type StartFunction = (
+  protocol: "http" | "https",
+  port: 3000 | 3001,
+  log: (msg: string) => void
+) => string;
 
 const startServer: StartFunction = (
   protocol: "http" | "https",
-  port: 3000 | 3001
+  port: 3000 | 3001,
+  log: (msg: string) => void
 ): "Server started" => {
-  console.log(`Server started on ${protocol}://server:${port}`);
+  log(`Server started on ${protocol}://server:${port}`);
 
   return "Server started";
 };
 
-startServer(serverConfig.protocol, serverConfig.port);
+startServer(serverConfig.protocol, serverConfig.port, serverConfig.log);
 
-type AnimationTimingFunc = "ease" | "ease-out" | "ease-in";
-type AnimationID = string | number;
-
-function createAnimation(
-  id: AnimationID,
-  animName: string,
-  timingFunc: AnimationTimingFunc = "ease",
-  duration: number,
-  iterCount: "infinite" | number
-): void {
-  console.log(`${animName} ${timingFunc} ${duration} ${iterCount}`);
+interface Styles {
+  [key: string]: string;
 }
 
-createAnimation("id", "fadeAnim", "ease-in", 5, "infinite");
+const styles: Styles = {
+  position: "ablsolute",
+  top: "20px",
+  left: "50px",
+};
+
+// type AnimationTimingFunc = "ease" | "ease-out" | "ease-in";
+// type AnimationID = string | number;
+
+// function createAnimation(
+//   id: AnimationID,
+//   animName: string,
+//   timingFunc: AnimationTimingFunc = "ease",
+//   duration: number,
+//   iterCount: "infinite" | number
+// ): void {
+//   console.log(`${animName} ${timingFunc} ${duration} ${iterCount}`);
+// }
+
+// createAnimation("id", "fadeAnim", "ease-in", 5, "infinite");
