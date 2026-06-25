@@ -222,3 +222,24 @@ const styles: Styles = {
 // }
 
 // createAnimation("id", "fadeAnim", "ease-in", 5, "infinite");
+
+let salary: number;
+salary = 500;
+
+interface UserData {
+  isBirthdayData: boolean;
+  ageData: number;
+  userNameData: string;
+}
+
+const userData = `{"isBirthdayData": true, "ageData": 40, "userNameData": "John"}`;
+
+const userObj: UserData = JSON.parse(userData);
+// console.log(userObj.smth); //! Property 'smth' does not exist on type 'UserData'.
+
+const isOkay = true;
+let movement: boolean | string = false;
+
+if (isOkay) {
+  movement = "moving";
+}
