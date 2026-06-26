@@ -263,11 +263,14 @@ const user: User = {
   addr: "adddr",
 };
 
-const dbName = "12345";
+// const dbName = "12345";
+let dbName: string;
+sendUserData(user, "qwerty");
+console.log(dbName!);
 
 function sendUserData(obj: User, db?: string): void {
   console.log(
-    obj.parents?.father?.toLocaleLowerCase(),
-    db?.toLocaleLowerCase()
+    obj.parents!.father?.toLocaleLowerCase(),
+    db!.toLocaleLowerCase()
   );
 }
