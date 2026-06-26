@@ -243,3 +243,31 @@ let movement: boolean | string = false;
 if (isOkay) {
   movement = "moving";
 }
+
+interface User {
+  login: string;
+  password: string;
+  age: number;
+  // addr?: string;
+  addr: string | undefined;
+  parents?: {
+    mother?: string;
+    father?: string;
+  };
+}
+
+const user: User = {
+  login: "first",
+  password: "passw1",
+  age: 23,
+  addr: "adddr",
+};
+
+const dbName = "12345";
+
+function sendUserData(obj: User, db?: string): void {
+  console.log(
+    obj.parents?.father?.toLocaleLowerCase(),
+    db?.toLocaleLowerCase()
+  );
+}
