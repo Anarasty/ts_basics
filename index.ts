@@ -245,11 +245,11 @@ if (isOkay) {
 }
 
 interface User {
-  login: string;
+  readonly login: string;
   password: string;
   age: number;
-  // addr?: string;
-  addr: string | undefined;
+  readonly addr?: string;
+  // readonly addr: string | undefined;
   parents?: {
     mother?: string;
     father?: string;
@@ -262,6 +262,9 @@ const user: User = {
   age: 23,
   addr: "adddr",
 };
+
+// user.login = 'sdsd' //!Cannot assign to 'login' because it is a read-only property.
+user.password = 'sdsd'
 
 // const dbName = "12345";
 let dbName: string;
