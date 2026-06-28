@@ -148,132 +148,162 @@
 //   }
 // }
 
-let msg: "Hello" = "Hello";
+// let msg: "Hello" = "Hello";
 
-msg = "Hello";
+// msg = "Hello";
 
-// type Config = { protocol: "http" | "https"; port: 3000 | 3001 };
-interface Config {
-  protocol: "http" | "https";
-  port: 3000 | 3001;
-  log: (msg: string) => void;
-}
-// type Role = { role: string };
-// type ConfigWithRole = Config & Role;
+// // type Config = { protocol: "http" | "https"; port: 3000 | 3001 };
+// interface Config {
+//   protocol: "http" | "https";
+//   port: 3000 | 3001;
+//   log: (msg: string) => void;
+// }
+// // type Role = { role: string };
+// // type ConfigWithRole = Config & Role;
 
-interface Role {
-  role: string;
-}
-
-interface ConfigWithRole extends Config, Role {}
-
-const serverConfig: ConfigWithRole = {
-  protocol: "https",
-  port: 3001,
-  role: "admin",
-  log: (msg: string): void => console.log(msg),
-};
-
-// const backupConfig: ConfigWithRole = {
-//   protocol: "http",
-//   port: 3000,
-//   role: "sysadmin",
-// };
-
-type StartFunction = (
-  protocol: "http" | "https",
-  port: 3000 | 3001,
-  log: (msg: string) => void
-) => string;
-
-const startServer: StartFunction = (
-  protocol: "http" | "https",
-  port: 3000 | 3001,
-  log: (msg: string) => void
-): "Server started" => {
-  log(`Server started on ${protocol}://server:${port}`);
-
-  return "Server started";
-};
-
-startServer(serverConfig.protocol, serverConfig.port, serverConfig.log);
-
-interface Styles {
-  [key: string]: string;
-}
-
-const styles: Styles = {
-  position: "ablsolute",
-  top: "20px",
-  left: "50px",
-};
-
-// type AnimationTimingFunc = "ease" | "ease-out" | "ease-in";
-// type AnimationID = string | number;
-
-// function createAnimation(
-//   id: AnimationID,
-//   animName: string,
-//   timingFunc: AnimationTimingFunc = "ease",
-//   duration: number,
-//   iterCount: "infinite" | number
-// ): void {
-//   console.log(`${animName} ${timingFunc} ${duration} ${iterCount}`);
+// interface Role {
+//   role: string;
 // }
 
-// createAnimation("id", "fadeAnim", "ease-in", 5, "infinite");
+// interface ConfigWithRole extends Config, Role {}
 
-let salary: number;
-salary = 500;
+// const serverConfig: ConfigWithRole = {
+//   protocol: "https",
+//   port: 3001,
+//   role: "admin",
+//   log: (msg: string): void => console.log(msg),
+// };
 
-interface UserData {
-  isBirthdayData: boolean;
-  ageData: number;
-  userNameData: string;
-}
+// // const backupConfig: ConfigWithRole = {
+// //   protocol: "http",
+// //   port: 3000,
+// //   role: "sysadmin",
+// // };
 
-const userData = `{"isBirthdayData": true, "ageData": 40, "userNameData": "John"}`;
+// type StartFunction = (
+//   protocol: "http" | "https",
+//   port: 3000 | 3001,
+//   log: (msg: string) => void,
+// ) => string;
 
-const userObj: UserData = JSON.parse(userData);
-// console.log(userObj.smth); //! Property 'smth' does not exist on type 'UserData'.
+// const startServer: StartFunction = (
+//   protocol: "http" | "https",
+//   port: 3000 | 3001,
+//   log: (msg: string) => void,
+// ): "Server started" => {
+//   log(`Server started on ${protocol}://server:${port}`);
 
-const isOkay = true;
-let movement: boolean | string = false;
+//   return "Server started";
+// };
 
-if (isOkay) {
-  movement = "moving";
-}
+// startServer(serverConfig.protocol, serverConfig.port, serverConfig.log);
 
-interface User {
-  readonly login: string;
-  password: string;
-  age: number;
-  readonly addr?: string;
-  // readonly addr: string | undefined;
-  parents?: {
-    mother?: string;
-    father?: string;
-  };
-}
+// interface Styles {
+//   [key: string]: string;
+// }
 
-const user: User = {
-  login: "first",
-  password: "passw1",
-  age: 23,
-  addr: "adddr",
-};
+// const styles: Styles = {
+//   position: "ablsolute",
+//   top: "20px",
+//   left: "50px",
+// };
+
+// // type AnimationTimingFunc = "ease" | "ease-out" | "ease-in";
+// // type AnimationID = string | number;
+
+// // function createAnimation(
+// //   id: AnimationID,
+// //   animName: string,
+// //   timingFunc: AnimationTimingFunc = "ease",
+// //   duration: number,
+// //   iterCount: "infinite" | number
+// // ): void {
+// //   console.log(`${animName} ${timingFunc} ${duration} ${iterCount}`);
+// // }
+
+// // createAnimation("id", "fadeAnim", "ease-in", 5, "infinite");
+
+// let salary: number;
+// salary = 500;
+
+// interface UserData {
+//   isBirthdayData: boolean;
+//   ageData: number;
+//   userNameData: string;
+// }
+
+// const userData = `{"isBirthdayData": true, "ageData": 40, "userNameData": "John"}`;
+
+// const userObj: UserData = JSON.parse(userData);
+// // console.log(userObj.smth); //! Property 'smth' does not exist on type 'UserData'.
+
+// const isOkay = true;
+// let movement: boolean | string = false;
+
+// if (isOkay) {
+//   movement = "moving";
+// }
+
+// interface User {
+//   readonly login: string;
+//   password: string;
+//   age: number;
+//   readonly addr?: string;
+//   // readonly addr: string | undefined;
+//   parents?: {
+//     mother?: string;
+//     father?: string;
+//   };
+// }
+
+// const user: User = {
+//   login: "first",
+//   password: "passw1",
+//   age: 23,
+//   addr: "adddr",
+// };
 
 // user.login = 'sdsd' //!Cannot assign to 'login' because it is a read-only property.
-user.password = 'sdsd'
+// user.password = "sdsd";
 
 // const dbName = "12345";
-let dbName: string;
-sendUserData(user, "qwerty");
-console.log(dbName!);
+// let dbName: string;
+// sendUserData(user, "qwerty");
+// console.log(dbName!);
 
-function sendUserData(obj: User, db?: string): void {
-  console.log(
-    obj.parents!.father?.toLocaleLowerCase(),
-    db!.toLocaleLowerCase()
-  );
+// function sendUserData(obj: User, db?: string): void {
+//   console.log(
+//     obj.parents!.father?.toLocaleLowerCase(),
+//     db!.toLocaleLowerCase(),
+//   );
+// }
+
+const TOP = "Top";
+const RIGHT = "Right";
+
+enum Directions {
+  TOP,
+  RIGHT,
+  LEFT,
+  BOTTOM,
 }
+
+enum TimingFunc {
+  EASE = "ease",
+  EASE_IN = "ease-in",
+  LINEAR = "linear",
+}
+
+enum TimingFunc1 {
+  EASE = 1,
+  EASE_IN = 2,
+  LINEAR = EASE * 2,
+}
+
+function frame(elem: string, dir: Directions, tFunc: TimingFunc): void {
+  if (dir === Directions.RIGHT) {
+    console.log(tFunc);
+  }
+}
+
+frame("id", Directions.RIGHT, TimingFunc.LINEAR);
