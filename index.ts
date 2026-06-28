@@ -357,7 +357,28 @@ try {
   }
 }
 
-type T0 = any | unknown //? type T0 = any UNION TYPE
-type T1 = number | unknown //? type T1 = unknown UNION TYPE
-type T2 = any & unknown //? type T2 = any INTERSECTION TYPE
-type T3 = number & unknown //? type T3 = number INTERSECTION TYPE
+type T0 = any | unknown; //? type T0 = any UNION TYPE
+type T1 = number | unknown; //? type T1 = unknown UNION TYPE
+type T2 = any & unknown; //? type T2 = any INTERSECTION TYPE
+type T3 = number & unknown; //? type T3 = number INTERSECTION TYPE
+
+const dataFromControl = {
+  water: 200,
+  el: 350,
+};
+
+function checkReadings(data: typeof dataFromControl): boolean {
+  const dataFromUser = {
+    water: 200,
+    el: 350,
+  };
+
+  if (data.el === dataFromUser.el && data.water === dataFromUser.water) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+const PI = 3.14;
+let PIClone: typeof PI;
