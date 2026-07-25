@@ -318,67 +318,105 @@
 // const someValue: unknown = 10
 // someValue.method()
 
-function fetchData(data: unknown): void {
-  if (typeof data === "string") {
-    console.log(data.toLocaleLowerCase());
-  }
-  // data.method(); //!Error = 'data' is of type 'unknown'
-}
+// function fetchData(data: unknown): void {
+//   if (typeof data === "string") {
+//     console.log(data.toLocaleLowerCase());
+//   }
+//   // data.method(); //!Error = 'data' is of type 'unknown'
+// }
 
-const userData = `{"isBirthdayData": true, "ageData": 40, "userNameData": "John"}`;
+// const userData = `{"isBirthdayData": true, "ageData": 40, "userNameData": "John"}`;
 
-function safeParse(s: string): unknown {
-  return JSON.parse(s);
-}
+// function safeParse(s: string): unknown {
+//   return JSON.parse(s);
+// }
 
-const data = safeParse(userData);
+// const data = safeParse(userData);
 
-function transferData(d: unknown): void {
-  if (typeof d === "string") {
-    console.log(d.toLocaleLowerCase());
-  } else if (typeof d === "object" && d) {
-    console.log(data);
-  } else {
-    console.error("error");
-  }
-}
+// function transferData(d: unknown): void {
+//   if (typeof d === "string") {
+//     console.log(d.toLocaleLowerCase());
+//   } else if (typeof d === "object" && d) {
+//     console.log(data);
+//   } else {
+//     console.error("error");
+//   }
+// }
 
-transferData(data);
+// transferData(data);
 
-try {
-  if (1) {
-    throw new Error("error");
-  }
-} catch (e) {
-  if (e instanceof Error) {
-    console.log(e.message);
-  } else if (typeof e === "string") {
-    console.log(e);
-  }
-}
+// try {
+//   if (1) {
+//     throw new Error("error");
+//   }
+// } catch (e) {
+//   if (e instanceof Error) {
+//     console.log(e.message);
+//   } else if (typeof e === "string") {
+//     console.log(e);
+//   }
+// }
 
-type T0 = any | unknown; //? type T0 = any UNION TYPE
-type T1 = number | unknown; //? type T1 = unknown UNION TYPE
-type T2 = any & unknown; //? type T2 = any INTERSECTION TYPE
-type T3 = number & unknown; //? type T3 = number INTERSECTION TYPE
+// type T0 = any | unknown; //? type T0 = any UNION TYPE
+// type T1 = number | unknown; //? type T1 = unknown UNION TYPE
+// type T2 = any & unknown; //? type T2 = any INTERSECTION TYPE
+// type T3 = number & unknown; //? type T3 = number INTERSECTION TYPE
 
-const dataFromControl = {
-  water: 200,
-  el: 350,
+// const dataFromControl = {
+//   water: 200,
+//   el: 350,
+// };
+
+// function checkReadings(data: typeof dataFromControl): boolean {
+//   const dataFromUser = {
+//     water: 200,
+//     el: 350,
+//   };
+
+//   if (data.el === dataFromUser.el && data.water === dataFromUser.water) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+// const PI = 3.14;
+// let PIClone: typeof PI;
+
+const fetchData = (url: string, method: "GET" | "POST"): void => {
+  console.log(method);
 };
 
-function checkReadings(data: typeof dataFromControl): boolean {
-  const dataFromUser = {
-    water: 200,
-    el: 350,
-  };
+const reqOptions = {
+  url: "https://someurl.com",
+  method: "GETqqq",
+};
 
-  if (data.el === dataFromUser.el && data.water === dataFromUser.water) {
-    return true;
-  } else {
-    return false;
-  }
-}
+const str = "str";
+const method = "GET";
 
-const PI = 3.14;
-let PIClone: typeof PI;
+fetchData("qqq", "GET");
+// fetchData(reqOptions.url, reqOptions.method as "GET");
+fetchData(reqOptions.url, <"GET">reqOptions.method);
+
+const box = document.querySelector(".box") as HTMLElement;
+const input = <HTMLInputElement>document.querySelector("input");
+
+// const someNumber: number = +input.value;
+const someNumber: number = +input.value;
+console.log(someNumber.toFixed());
+
+// !----
+
+let a = "value" as const;
+
+let b = { f: 100 } as const;
+let c = [] as const;
+
+let value = "value";
+let arr = ["ad", "ddas"];
+let obj = { f: 100 };
+
+// let T0 = obj as const; //!A 'const' assertion can only be applied to references to enum members, or string, number, boolean, array, or object literals.
+
+let T5 = (Math.round(Math.random() * 1) ? "yes" : "no") as const;
