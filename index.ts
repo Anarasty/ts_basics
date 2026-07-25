@@ -383,40 +383,81 @@
 // const PI = 3.14;
 // let PIClone: typeof PI;
 
-const fetchData = (url: string, method: "GET" | "POST"): void => {
-  console.log(method);
-};
+// const fetchData = (url: string, method: "GET" | "POST"): void => {
+//   console.log(method);
+// };
 
-const reqOptions = {
-  url: "https://someurl.com",
-  method: "GETqqq",
-};
+// const reqOptions = {
+//   url: "https://someurl.com",
+//   method: "GETqqq",
+// };
 
-const str = "str";
-const method = "GET";
+// const str = "str";
+// const method = "GET";
 
-fetchData("qqq", "GET");
-// fetchData(reqOptions.url, reqOptions.method as "GET");
-fetchData(reqOptions.url, <"GET">reqOptions.method);
+// fetchData("qqq", "GET");
+// // fetchData(reqOptions.url, reqOptions.method as "GET");
+// fetchData(reqOptions.url, <"GET">reqOptions.method);
 
-const box = document.querySelector(".box") as HTMLElement;
-const input = <HTMLInputElement>document.querySelector("input");
+// const box = document.querySelector(".box") as HTMLElement;
+// const input = <HTMLInputElement>document.querySelector("input");
 
+// // const someNumber: number = +input.value;
 // const someNumber: number = +input.value;
-const someNumber: number = +input.value;
-console.log(someNumber.toFixed());
+// console.log(someNumber.toFixed());
 
-// !----
+// // !----
 
-let a = "value" as const;
+// let a = "value" as const;
 
-let b = { f: 100 } as const;
-let c = [] as const;
+// let b = { f: 100 } as const;
+// let c = [] as const;
 
-let value = "value";
-let arr = ["ad", "ddas"];
-let obj = { f: 100 };
+// let value = "value";
+// let arr = ["ad", "ddas"];
+// let obj = { f: 100 };
 
 // let T0 = obj as const; //!A 'const' assertion can only be applied to references to enum members, or string, number, boolean, array, or object literals.
 
-let T5 = (Math.round(Math.random() * 1) ? "yes" : "no") as const;
+// let T5 = (Math.round(Math.random() * 1) ? "yes" : "no") as const;
+
+// let num: Number = new Number(5);
+// let num2: number = 5;
+// let num3: number = Number(5);
+
+// num = num2;
+// num2 = num; //! Type 'Number' is not assignable to type 'number'. 'number' is a primitive, but 'Number' is a wrapper object. Prefer using 'number' when possible
+
+const num = 5;
+const strNum: string = num.toString();
+const str = "5";
+const numStr: number = +str;
+
+interface Department {
+  name: string;
+  budget: number;
+}
+
+const department: Department = {
+  name: "web-dev",
+  budget: 5000,
+};
+
+interface Project {
+  name: string;
+  projectBudget: number;
+}
+
+// const mainProject: Project = {
+//   ...department,
+//   projectBudget: 5000,
+// };
+
+function transformDepartment(department: Department, amount: number): Project {
+  return {
+    name: department.name,
+    projectBudget: amount,
+  };
+}
+
+const mainProject = transformDepartment(department, 4000);
