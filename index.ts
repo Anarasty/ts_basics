@@ -462,50 +462,84 @@
 
 // const mainProject = transformDepartment(department, 4000);
 
-function printMsg(msg: string[] | number | boolean): void {
-  if (Array.isArray(msg)) {
-    msg.forEach((m) => console.log(m));
-  } else if (isNumber(msg)) {
-    console.log(msg);
+// function printMsg(msg: string[] | number | boolean): void {
+//   if (Array.isArray(msg)) {
+//     msg.forEach((m) => console.log(m));
+//   } else if (isNumber(msg)) {
+//     console.log(msg);
+//   } else {
+//     console.log(msg);
+//   }
+//   console.log(msg);
+// }
+
+// printMsg(4);
+
+// function isNumber(n: string[] | number | boolean): n is number {
+//   return typeof n === "number";
+// }
+
+// interface Car {
+//   engine: string;
+//   wheels: {
+//     number: number;
+//     type: string;
+//   };
+// }
+
+// interface Ship {
+//   engine: string;
+//   sail: string;
+// }
+
+// function repairVehicle(vehicle: Car | Ship) {
+//   if (isCar(vehicle)) {
+//     vehicle.wheels;
+//   } else if (isShip(vehicle)) {
+//     vehicle.sail;
+//   } else {
+//     vehicle;
+//   }
+// }
+
+// function isCar(car: Car | Ship): car is Car {
+//   return (car as Car).wheels.number !== undefined;
+// }
+
+// function isShip(ship: Car | Ship): ship is Ship {
+//   return "sail" in ship;
+// }
+
+interface Square {
+  side: number;
+  area: number;
+}
+
+interface Rect {
+  a: number;
+  b: number;
+  area: number;
+}
+
+function calculateArea(side: number): Square;
+function calculateArea(a: number, b: number): Rect;
+function calculateArea(a: number, b?: number): Square | Rect {
+  if (b) {
+    const rect: Rect = {
+      a,
+      b,
+      area: a * b,
+    };
+
+    return rect;
   } else {
-    console.log(msg);
-  }
-  console.log(msg);
-}
+    const square: Square = {
+      side: a,
+      area: a * a,
+    };
 
-printMsg(4);
-
-function isNumber(n: string[] | number | boolean): n is number {
-  return typeof n === "number";
-}
-
-interface Car {
-  engine: string;
-  wheels: {
-    number: number;
-    type: string;
-  };
-}
-
-interface Ship {
-  engine: string;
-  sail: string;
-}
-
-function repairVehicle(vehicle: Car | Ship) {
-  if (isCar(vehicle)) {
-    vehicle.wheels;
-  } else if (isShip(vehicle)) {
-    vehicle.sail;
-  } else {
-    vehicle;
+    return square;
   }
 }
 
-function isCar(car: Car | Ship): car is Car {
-  return (car as Car).wheels.number !== undefined;
-}
-
-function isShip(ship: Car | Ship): ship is Ship {
-  return "sail" in ship;
-}
+calculateArea(1, 5)
