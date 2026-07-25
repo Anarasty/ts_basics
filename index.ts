@@ -428,36 +428,84 @@
 // num = num2;
 // num2 = num; //! Type 'Number' is not assignable to type 'number'. 'number' is a primitive, but 'Number' is a wrapper object. Prefer using 'number' when possible
 
-const num = 5;
-const strNum: string = num.toString();
-const str = "5";
-const numStr: number = +str;
+// const num = 5;
+// const strNum: string = num.toString();
+// const str = "5";
+// const numStr: number = +str;
 
-interface Department {
-  name: string;
-  budget: number;
-}
+// interface Department {
+//   name: string;
+//   budget: number;
+// }
 
-const department: Department = {
-  name: "web-dev",
-  budget: 5000,
-};
-
-interface Project {
-  name: string;
-  projectBudget: number;
-}
-
-// const mainProject: Project = {
-//   ...department,
-//   projectBudget: 5000,
+// const department: Department = {
+//   name: "web-dev",
+//   budget: 5000,
 // };
 
-function transformDepartment(department: Department, amount: number): Project {
-  return {
-    name: department.name,
-    projectBudget: amount,
+// interface Project {
+//   name: string;
+//   projectBudget: number;
+// }
+
+// // const mainProject: Project = {
+// //   ...department,
+// //   projectBudget: 5000,
+// // };
+
+// function transformDepartment(department: Department, amount: number): Project {
+//   return {
+//     name: department.name,
+//     projectBudget: amount,
+//   };
+// }
+
+// const mainProject = transformDepartment(department, 4000);
+
+function printMsg(msg: string[] | number | boolean): void {
+  if (Array.isArray(msg)) {
+    msg.forEach((m) => console.log(m));
+  } else if (isNumber(msg)) {
+    console.log(msg);
+  } else {
+    console.log(msg);
+  }
+  console.log(msg);
+}
+
+printMsg(4);
+
+function isNumber(n: string[] | number | boolean): n is number {
+  return typeof n === "number";
+}
+
+interface Car {
+  engine: string;
+  wheels: {
+    number: number;
+    type: string;
   };
 }
 
-const mainProject = transformDepartment(department, 4000);
+interface Ship {
+  engine: string;
+  sail: string;
+}
+
+function repairVehicle(vehicle: Car | Ship) {
+  if (isCar(vehicle)) {
+    vehicle.wheels;
+  } else if (isShip(vehicle)) {
+    vehicle.sail;
+  } else {
+    vehicle;
+  }
+}
+
+function isCar(car: Car | Ship): car is Car {
+  return (car as Car).wheels.number !== undefined;
+}
+
+function isShip(ship: Car | Ship): ship is Ship {
+  return "sail" in ship;
+}
