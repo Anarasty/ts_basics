@@ -510,36 +510,54 @@
 //   return "sail" in ship;
 // }
 
-interface Square {
-  side: number;
-  area: number;
+// interface Square {
+//   side: number;
+//   area: number;
+// }
+
+// interface Rect {
+//   a: number;
+//   b: number;
+//   area: number;
+// }
+
+// function calculateArea(side: number): Square;
+// function calculateArea(a: number, b: number): Rect;
+// function calculateArea(a: number, b?: number): Square | Rect {
+//   if (b) {
+//     const rect: Rect = {
+//       a,
+//       b,
+//       area: a * b,
+//     };
+
+//     return rect;
+//   } else {
+//     const square: Square = {
+//       side: a,
+//       area: a * a,
+//     };
+
+//     return square;
+//   }
+// }
+
+// calculateArea(1, 5)
+
+const box = document.querySelector(".box") as HTMLElement;
+const input = document.querySelector("input");
+const link = document.querySelector("a");
+const p = document.querySelector(".paragraph") as HTMLParagraphElement;
+const links = document.querySelectorAll(".a");
+
+if (link) {
+  link.href = "asdasd";
 }
 
-interface Rect {
-  a: number;
-  b: number;
-  area: number;
-}
+input?.value;
 
-function calculateArea(side: number): Square;
-function calculateArea(a: number, b: number): Rect;
-function calculateArea(a: number, b?: number): Square | Rect {
-  if (b) {
-    const rect: Rect = {
-      a,
-      b,
-      area: a * b,
-    };
+const elem = document.createElement("a");
 
-    return rect;
-  } else {
-    const square: Square = {
-      side: a,
-      area: a * a,
-    };
-
-    return square;
-  }
-}
-
-calculateArea(1, 5)
+link?.addEventListener("scroll", (e) => {
+  e.preventDefault();
+});
