@@ -544,20 +544,52 @@
 
 // calculateArea(1, 5)
 
-const box = document.querySelector(".box") as HTMLElement;
-const input = document.querySelector("input");
-const link = document.querySelector("a");
-const p = document.querySelector(".paragraph") as HTMLParagraphElement;
-const links = document.querySelectorAll(".a");
+// const box = document.querySelector(".box") as HTMLElement;
+// const input = document.querySelector("input");
+// const link = document.querySelector("a");
+// const p = document.querySelector(".paragraph") as HTMLParagraphElement;
+// const links = document.querySelectorAll(".a");
 
-if (link) {
-  link.href = "asdasd";
+// if (link) {
+//   link.href = "asdasd";
+// }
+
+// input?.value;
+
+// const elem = document.createElement("a");
+
+// link?.addEventListener("scroll", (e) => {
+//   e.preventDefault();
+// });
+
+//!!!GENERICS
+
+function processingData<T>(data: T) {
+  return data;
 }
 
-input?.value;
+let res1 = processingData(1);
+let res2 = processingData("1");
 
-const elem = document.createElement("a");
+const num = 10;
 
-link?.addEventListener("scroll", (e) => {
-  e.preventDefault();
-});
+const res3 = processingData<number>(num);
+
+interface PrintUK {
+  design: number;
+}
+interface PrintES {
+  design: string;
+}
+
+interface Print<Type> {
+  design: Type;
+}
+
+const somePrint: Print<string> = {
+  design: "ten",
+};
+
+const someOtherPrint: Print<number> = {
+  design: 10,
+};
