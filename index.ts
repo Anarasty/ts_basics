@@ -760,3 +760,6 @@ const google = {
 };
 
 // printDebts("google", "name", "open");
+
+type GoogleKeys = keyof typeof google;
+const keys2: GoogleKeys = "name";
