@@ -676,27 +676,57 @@
 // depositMoney("500");
 // // depositMoney(false); //!Error
 
-class User<T, S> {
-  name: T;
-  age: S;
-  constructor(name: T, age: S) {
-    this.name = name;
-    this.age = age;
-  }
+// class User<T, S> {
+//   name: T;
+//   age: S;
+//   constructor(name: T, age: S) {
+//     this.name = name;
+//     this.age = age;
+//   }
 
-  sayMyFullName<T>(surname: T): string {
-    if (typeof surname !== "string") {
-      return `I have only name: ${this.name}`;
-    } else {
-      return `${this.name} ${surname}`;
-    }
-  }
+//   sayMyFullName<T>(surname: T): string {
+//     if (typeof surname !== "string") {
+//       return `I have only name: ${this.name}`;
+//     } else {
+//       return `${this.name} ${surname}`;
+//     }
+//   }
+// }
+
+// const ivan = new User("Ivan", 30);
+// console.log(ivan.sayMyFullName("Smith"));
+
+// const nameData = "Alex";
+// const ageData = 31;
+
+// const alex = new User<string, number>(nameData, ageData);
+
+const arr: Array<number> = [1, 2, 3];
+const arr1: number[] = [1, 2, 3];
+
+const roarr: ReadonlyArray<string> = ["ddsds"];
+// roarr[0] = "wewew";
+
+interface IState {
+  data: {
+    name: string;
+  };
+  tag?: string;
 }
 
-const ivan = new User("Ivan", 30);
-console.log(ivan.sayMyFullName("Smith"));
+const state: Partial<IState> = {
+  data: {
+    name: "John",
+  },
+};
 
-const nameData = "Alex";
-const ageData = 31;
+const strictState: Required<IState> = {
+   data: {
+    name: "sadas",
+  },
+  tag: "asdasd"
+}
 
-const alex = new User<string, number>(nameData, ageData);
+function action(state: Readonly<IState>) {
+  state.data.name = "abc";
+}
