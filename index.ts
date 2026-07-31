@@ -701,32 +701,62 @@
 
 // const alex = new User<string, number>(nameData, ageData);
 
-const arr: Array<number> = [1, 2, 3];
-const arr1: number[] = [1, 2, 3];
+// const arr: Array<number> = [1, 2, 3];
+// const arr1: number[] = [1, 2, 3];
 
-const roarr: ReadonlyArray<string> = ["ddsds"];
-// roarr[0] = "wewew";
+// const roarr: ReadonlyArray<string> = ["ddsds"];
+// // roarr[0] = "wewew";
 
-interface IState {
-  data: {
-    name: string;
-  };
-  tag?: string;
+// interface IState {
+//   data: {
+//     name: string;
+//   };
+//   tag?: string;
+// }
+
+// const state: Partial<IState> = {
+//   data: {
+//     name: "John",
+//   },
+// };
+
+// const strictState: Required<IState> = {
+//    data: {
+//     name: "sadas",
+//   },
+//   tag: "asdasd"
+// }
+
+// function action(state: Readonly<IState>) {
+//   state.data.name = "abc";
+// }
+
+interface ICompany {
+  name: string;
+  debts: number;
 }
 
-const state: Partial<IState> = {
-  data: {
-    name: "John",
-  },
+type CompanyKeys = keyof ICompany;
+const keys: CompanyKeys = "debts";
+
+function printDebts<T, K extends keyof T, S extends keyof T>(
+  company: T,
+  name: K,
+  debts: S,
+) {
+  console.log(`Company ${company[name]}, debts: ${company[name]}`);
+}
+
+const hh: ICompany = {
+  name: "HH",
+  debts: 50000,
 };
 
-const strictState: Required<IState> = {
-   data: {
-    name: "sadas",
-  },
-  tag: "asdasd"
-}
+printDebts(hh, "name", "debts");
 
-function action(state: Readonly<IState>) {
-  state.data.name = "abc";
-}
+const google = {
+  name: "Google",
+  open: "true",
+};
+
+// printDebts("google", "name", "open");
