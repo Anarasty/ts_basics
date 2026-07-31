@@ -622,56 +622,81 @@
 //   design: 10,
 // };
 
-interface ProcessingFn {
-  <T>(data: T): T;
-}
+// interface ProcessingFn {
+//   <T>(data: T): T;
+// }
 
-function processing<T>(data: T): T {
-  return data;
-}
+// function processing<T>(data: T): T {
+//   return data;
+// }
 
-let newFunc: ProcessingFn = processing;
+// let newFunc: ProcessingFn = processing;
 
-type Smth<T> = T;
+// type Smth<T> = T;
 
-const num: Smth<number> = 5;
+// const num: Smth<number> = 5;
 
-interface ParentsOfUser {
-  mother: string;
-  father: string;
-}
+// interface ParentsOfUser {
+//   mother: string;
+//   father: string;
+// }
 
-interface User<ParentsData extends ParentsOfUser> {
-  login: string;
-  age: number;
-  parents: ParentsData;
-}
+// interface User<ParentsData extends ParentsOfUser> {
+//   login: string;
+//   age: number;
+//   parents: ParentsData;
+// }
 
-const user: User<{ mother: string; father: string; married: boolean }> = {
-  login: "str",
-  age: 54,
-  parents: { mother: "Anna", father: "no data", married: true },
-};
+// const user: User<{ mother: string; father: string; married: boolean }> = {
+//   login: "str",
+//   age: 54,
+//   parents: { mother: "Anna", father: "no data", married: true },
+// };
 
-type OrNull<Type> = Type | null;
-type OneOrMany<Type> = Type | Type[];
+// type OrNull<Type> = Type | null;
+// type OneOrMany<Type> = Type | Type[];
 
-const data: OneOrMany<number[]> = [5];
+// const data: OneOrMany<number[]> = [5];
 
-// const depositMoney = <T extends number | string>(amount: T): T => {
+// // const depositMoney = <T extends number | string>(amount: T): T => {
+// //   console.log(`req to server with amount: ${amount}`);
+// //   return amount;
+// // };
+
+// // depositMoney(500);
+// // depositMoney("500");
+// // depositMoney(false);
+
+// const depositMoney = (amount: number | string): number | string => {
 //   console.log(`req to server with amount: ${amount}`);
 //   return amount;
 // };
 
 // depositMoney(500);
 // depositMoney("500");
-// depositMoney(false);
+// // depositMoney(false); //!Error
 
-const depositMoney = (amount: number | string): number | string => {
-  console.log(`req to server with amount: ${amount}`);
-  return amount;
-};
+class User<T, S> {
+  name: T;
+  age: S;
+  constructor(name: T, age: S) {
+    this.name = name;
+    this.age = age;
+  }
 
-depositMoney(500);
-depositMoney("500");
-// depositMoney(false); //!Error
+  sayMyFullName<T>(surname: T): string {
+    if (typeof surname !== "string") {
+      return `I have only name: ${this.name}`;
+    } else {
+      return `${this.name} ${surname}`;
+    }
+  }
+}
+
+const ivan = new User("Ivan", 30);
+console.log(ivan.sayMyFullName("Smith"));
+
+const nameData = "Alex";
+const ageData = 31;
+
+const alex = new User<string, number>(nameData, ageData);
