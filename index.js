@@ -1,3 +1,4 @@
+"use strict";
 // let userName: string = "";
 // userName.isInteger()
 // userName = "test";
@@ -304,19 +305,450 @@
 // }
 // const PI = 3.14;
 // let PIClone: typeof PI;
-var fetchData = function (url, method) {
-    console.log(method);
-};
-var reqOptions = {
-    url: "https://someurl.com",
-    method: "GETqqq",
-};
-var str = "str";
-var method = "GET";
-fetchData("qqq", "GET");
-// fetchData(reqOptions.url, reqOptions.method as "GET");
-fetchData(reqOptions.url, reqOptions.method);
-var box = document.querySelector(".box");
-var input = document.querySelector("input");
-var someNumber = +input.value;
-console.log(someNumber);
+// const fetchData = (url: string, method: "GET" | "POST"): void => {
+//   console.log(method);
+// };
+// const reqOptions = {
+//   url: "https://someurl.com",
+//   method: "GETqqq",
+// };
+// const str = "str";
+// const method = "GET";
+// fetchData("qqq", "GET");
+// // fetchData(reqOptions.url, reqOptions.method as "GET");
+// fetchData(reqOptions.url, <"GET">reqOptions.method);
+// const box = document.querySelector(".box") as HTMLElement;
+// const input = <HTMLInputElement>document.querySelector("input");
+// // const someNumber: number = +input.value;
+// const someNumber: number = +input.value;
+// console.log(someNumber.toFixed());
+// // !----
+// let a = "value" as const;
+// let b = { f: 100 } as const;
+// let c = [] as const;
+// let value = "value";
+// let arr = ["ad", "ddas"];
+// let obj = { f: 100 };
+// let T0 = obj as const; //!A 'const' assertion can only be applied to references to enum members, or string, number, boolean, array, or object literals.
+// let T5 = (Math.round(Math.random() * 1) ? "yes" : "no") as const;
+// let num: Number = new Number(5);
+// let num2: number = 5;
+// let num3: number = Number(5);
+// num = num2;
+// num2 = num; //! Type 'Number' is not assignable to type 'number'. 'number' is a primitive, but 'Number' is a wrapper object. Prefer using 'number' when possible
+// const num = 5;
+// const strNum: string = num.toString();
+// const str = "5";
+// const numStr: number = +str;
+// interface Department {
+//   name: string;
+//   budget: number;
+// }
+// const department: Department = {
+//   name: "web-dev",
+//   budget: 5000,
+// };
+// interface Project {
+//   name: string;
+//   projectBudget: number;
+// }
+// // const mainProject: Project = {
+// //   ...department,
+// //   projectBudget: 5000,
+// // };
+// function transformDepartment(department: Department, amount: number): Project {
+//   return {
+//     name: department.name,
+//     projectBudget: amount,
+//   };
+// }
+// const mainProject = transformDepartment(department, 4000);
+// function printMsg(msg: string[] | number | boolean): void {
+//   if (Array.isArray(msg)) {
+//     msg.forEach((m) => console.log(m));
+//   } else if (isNumber(msg)) {
+//     console.log(msg);
+//   } else {
+//     console.log(msg);
+//   }
+//   console.log(msg);
+// }
+// printMsg(4);
+// function isNumber(n: string[] | number | boolean): n is number {
+//   return typeof n === "number";
+// }
+// interface Car {
+//   engine: string;
+//   wheels: {
+//     number: number;
+//     type: string;
+//   };
+// }
+// interface Ship {
+//   engine: string;
+//   sail: string;
+// }
+// function repairVehicle(vehicle: Car | Ship) {
+//   if (isCar(vehicle)) {
+//     vehicle.wheels;
+//   } else if (isShip(vehicle)) {
+//     vehicle.sail;
+//   } else {
+//     vehicle;
+//   }
+// }
+// function isCar(car: Car | Ship): car is Car {
+//   return (car as Car).wheels.number !== undefined;
+// }
+// function isShip(ship: Car | Ship): ship is Ship {
+//   return "sail" in ship;
+// }
+// interface Square {
+//   side: number;
+//   area: number;
+// }
+// interface Rect {
+//   a: number;
+//   b: number;
+//   area: number;
+// }
+// function calculateArea(side: number): Square;
+// function calculateArea(a: number, b: number): Rect;
+// function calculateArea(a: number, b?: number): Square | Rect {
+//   if (b) {
+//     const rect: Rect = {
+//       a,
+//       b,
+//       area: a * b,
+//     };
+//     return rect;
+//   } else {
+//     const square: Square = {
+//       side: a,
+//       area: a * a,
+//     };
+//     return square;
+//   }
+// }
+// calculateArea(1, 5)
+// const box = document.querySelector(".box") as HTMLElement;
+// const input = document.querySelector("input");
+// const link = document.querySelector("a");
+// const p = document.querySelector(".paragraph") as HTMLParagraphElement;
+// const links = document.querySelectorAll(".a");
+// if (link) {
+//   link.href = "asdasd";
+// }
+// input?.value;
+// const elem = document.createElement("a");
+// link?.addEventListener("scroll", (e) => {
+//   e.preventDefault();
+// });
+//!!!GENERICS
+// function processingData<T, S>(data: T[], options: S): string {
+//   data.length;
+//   switch (typeof data) {
+//     case "string":
+//       return `${data}, speed: ${options}`;
+//       break;
+//     case "number":
+//       return `${data}, speed: ${options}`;
+//       break;
+//     default:
+//       return "Not valid";
+//   }
+// }
+// let res1 = processingData([1], "fast");
+// let res2 = processingData(["1"], "slow");
+// const num = 10;
+// const res3 = processingData<number, string>([num], "slow");
+// function processing<T>(data: T): T {
+//   return data;
+// }
+// interface ProcessingFn {
+//   <T>(data: T): T;
+// }
+// let newFunc: ProcessingFn = processing;
+// interface DataSaver {
+//   processing: ProcessingFn;
+// }
+// const saver: DataSaver = {
+//   processing: processing,
+// };
+// interface PrintUK {
+//   design: number;
+// }
+// interface PrintES {
+//   design: string;
+// }
+// interface Print<Type> {
+//   design: Type;
+// }
+// const somePrint: Print<string> = {
+//   design: "ten",
+// };
+// const someOtherPrint: Print<number> = {
+//   design: 10,
+// };
+// interface ProcessingFn {
+//   <T>(data: T): T;
+// }
+// function processing<T>(data: T): T {
+//   return data;
+// }
+// let newFunc: ProcessingFn = processing;
+// type Smth<T> = T;
+// const num: Smth<number> = 5;
+// interface ParentsOfUser {
+//   mother: string;
+//   father: string;
+// }
+// interface User<ParentsData extends ParentsOfUser> {
+//   login: string;
+//   age: number;
+//   parents: ParentsData;
+// }
+// const user: User<{ mother: string; father: string; married: boolean }> = {
+//   login: "str",
+//   age: 54,
+//   parents: { mother: "Anna", father: "no data", married: true },
+// };
+// type OrNull<Type> = Type | null;
+// type OneOrMany<Type> = Type | Type[];
+// const data: OneOrMany<number[]> = [5];
+// // const depositMoney = <T extends number | string>(amount: T): T => {
+// //   console.log(`req to server with amount: ${amount}`);
+// //   return amount;
+// // };
+// // depositMoney(500);
+// // depositMoney("500");
+// // depositMoney(false);
+// const depositMoney = (amount: number | string): number | string => {
+//   console.log(`req to server with amount: ${amount}`);
+//   return amount;
+// };
+// depositMoney(500);
+// depositMoney("500");
+// // depositMoney(false); //!Error
+// class User<T, S> {
+//   name: T;
+//   age: S;
+//   constructor(name: T, age: S) {
+//     this.name = name;
+//     this.age = age;
+//   }
+//   sayMyFullName<T>(surname: T): string {
+//     if (typeof surname !== "string") {
+//       return `I have only name: ${this.name}`;
+//     } else {
+//       return `${this.name} ${surname}`;
+//     }
+//   }
+// }
+// const ivan = new User("Ivan", 30);
+// console.log(ivan.sayMyFullName("Smith"));
+// const nameData = "Alex";
+// const ageData = 31;
+// const alex = new User<string, number>(nameData, ageData);
+// const arr: Array<number> = [1, 2, 3];
+// const arr1: number[] = [1, 2, 3];
+// const roarr: ReadonlyArray<string> = ["ddsds"];
+// // roarr[0] = "wewew";
+// interface IState {
+//   data: {
+//     name: string;
+//   };
+//   tag?: string;
+// }
+// const state: Partial<IState> = {
+//   data: {
+//     name: "John",
+//   },
+// };
+// const strictState: Required<IState> = {
+//    data: {
+//     name: "sadas",
+//   },
+//   tag: "asdasd"
+// }
+// function action(state: Readonly<IState>) {
+//   state.data.name = "abc";
+// }
+// interface ICompany {
+//   name: string;
+//   debts: number;
+//   departments: Department[];
+//   management: {
+//     owner: string;
+//   };
+// }
+// interface Department {
+//   [key: string]: string;
+// }
+// const debts = "debts";
+// type CompanyDebtsType = ICompany[typeof debts];
+// // type CompanyDebtsType = ICompany["debts"];
+// type CompanyOwnerType = ICompany["management"]["owner"];
+// type CompanyDepartmentsType = ICompany["departments"][number];
+// type CompanyDepartmentsTypes = ICompany["departments"];
+// type Test = ICompany[keyof ICompany];
+// type CompanyKeys = keyof ICompany;
+// const keys: CompanyKeys = "debts";
+// function printDebts<T, K extends keyof T, S extends keyof T>(
+//   company: T,
+//   name: K,
+//   debts: S,
+// ) {
+//   console.log(`Company ${company[name]}, debts: ${company[name]}`);
+// }
+// // const hh: ICompany = {
+// //   name: "HH",
+// //   debts: 50000,
+// // };
+// // printDebts(hh, "name", "debts");
+// const google: ICompany = {
+//   name: "Google",
+//   debts: 5000,
+//   departments: {
+//     sales: "sales",
+//     developer: "dev",
+//   },
+//   management: {
+//     owner: "John",
+//   },
+// };
+// printDebts(google, "name", "debts");
+// type GoogleKeys = keyof typeof google;
+// const keys2: GoogleKeys = "name";
+// Condition ? true : false
+// SomeType extends OtherType ? TrueType : FalseType
+// const str: string = "Hello";
+// type Example = "string" extends "Hello" ? string : number;
+// type FromUserOrFromBase<T extends string | number> = T extends string
+//   ? IDataFromUser
+//   : IDataFromBase;
+// interface User<T extends "created" | Date> {
+//   created: T extends "created" ? "created" : Date;
+// }
+// const user: User<"created"> = {
+//   created: "created",
+// };
+// interface IDataFromUser {
+//   weight: string;
+// }
+// interface IDataFromBase {
+//   calories: number;
+// }
+// function calculateDailyCalories(str: string): IDataFromUser;
+// function calculateDailyCalories(num: number): IDataFromBase;
+// function calculateDailyCalories<T extends string | number>(
+//   numOrStr: T,
+// ): T extends string ? IDataFromUser : IDataFromBase {
+//   if (typeof numOrStr === "string") {
+//     const obj: IDataFromUser = {
+//       weight: numOrStr,
+//     };
+//     return obj as FromUserOrFromBase<T>;
+//   } else {
+//     const obj: IDataFromBase = {
+//       calories: numOrStr,
+//     };
+//     return obj as FromUserOrFromBase<T>;
+//   }
+// }
+// type GetStringType<T extends "hello" | "world" | string> = T extends "hello"
+//   ? "hello"
+//   : T extends "world"
+//     ? "world"
+//     : string;
+// type GetFirstType<T> = T extends Array<infer First> ? First : T;
+// type Ex = GetFirstType<number[]>;
+// type ToArray<Type> = Type extends any ? Type[] : never;
+// type ExArray = ToArray<Ex | string>;
+// type Currencies = {
+//   usa: "usd";
+//   china?: "cny";
+//   ukraine: "uah";
+//   readonly kz: "tenge";
+// };
+// type CreateCustomCurr<T> = {
+//   -readonly [P in keyof T]-?: string;
+// };
+// type CustomCurrencies = CreateCustomCurr<Currencies>;
+// type ROnlyCurr = Readonly<Currencies>;
+// // type CustomCurrencies = {
+// //   usa: string;
+// //   china: string;
+// //   ukraine: string;
+// //   kz: string;
+// // };
+// type Keys = "name" | "age" | "role";
+// type User = {
+//   [K in Keys]: string;
+// };
+// const alex: User = {
+//   name: "Alex",
+//   age: "25",
+//   role: "admin",
+// };
+// type Currencies = {
+//   usa: "usd";
+//   ukraine: "uah";
+//   china: "cny";
+//   kz: "tenge";
+// };
+// type CreateCustomCurr<T> = {
+//   [P in keyof T as `custom${Capitalize<string & P>}`]: string;
+// };
+// type CurrWithoutUSA = Omit<Currencies, "usa">; // исключение
+// type CurrUSAAndUkraine = Pick<Currencies, "usa" | "ukraine">; // фильтрация по свойству
+// type CountriesWithoutUSA = Exclude<keyof Currencies, "usa">;
+// type FadeType = Exclude<MyAnimation, "swipe">; // удаление из union type
+// type SwipeType = Extract<MyAnimation | Direction, "swipe">; // выбор подходящего типа
+// type PlayerNames = "alex" | "john";
+// type CustomCurrencies = CreateCustomCurr<Currencies>;
+// type GameDataCurr = Record<PlayerNames, CustomCurrencies>;
+// const gameData: GameDataCurr = {
+//   alex: {
+//     customChina: "111",
+//     customKz: "222",
+//     customUkraine: "333",
+//     customUsa: "444",
+//   },
+//   john: {
+//     customChina: "111",
+//     customKz: "222",
+//     customUkraine: "333",
+//     customUsa: "444",
+//   },
+// };
+// type MyAnimation = "fade" | "swipe";
+// type Direction = "in" | "out";
+// type MyNewAnimation = `${MyAnimation}${Capitalize<Direction>}`;
+// function calculate(a: number, b: number): number {
+//   return a * b;
+// }
+// type CalculateRT = ReturnType<typeof calculate>;
+// let anotherRes: CalculateRT = 5;
+// type CalculatePT = Parameters<typeof calculate>[0];
+// type PT1 = Parameters<(a: number) => number>;
+// type PT2 = Parameters<<T>(a: T) => T>;
+// class Example {
+//   constructor(a: number) {}
+// }
+// type T0 = ConstructorParameters<typeof Example>;
+const jsonTest = '{"name": "Test", "data": "dadaaad"}';
+const objFromJson = JSON.parse(jsonTest);
+let toDoList = [];
+fetch("https://jsonplaceholder.typicode.com/todos/1")
+  .then((response) => response.json())
+  .then((json) => {
+    if ("id" in json) {
+      toDoList.push(json);
+    } else if (Array.isArray(json)) {
+      toDoList = json;
+    } else {
+      console.log(`${json} - is a string`);
+    }
+    console.log(toDoList);
+  });

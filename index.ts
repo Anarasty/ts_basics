@@ -921,20 +921,59 @@
 
 // type MyNewAnimation = `${MyAnimation}${Capitalize<Direction>}`;
 
-function calculate(a: number, b: number): number {
-  return a * b;
+// function calculate(a: number, b: number): number {
+//   return a * b;
+// }
+
+// type CalculateRT = ReturnType<typeof calculate>;
+
+// let anotherRes: CalculateRT = 5;
+
+// type CalculatePT = Parameters<typeof calculate>[0];
+// type PT1 = Parameters<(a: number) => number>;
+// type PT2 = Parameters<<T>(a: T) => T>;
+
+// class Example {
+//   constructor(a: number) {}
+// }
+
+// type T0 = ConstructorParameters<typeof Example>;
+
+const jsonTest = '{"name": "Test", "data": "dadaaad"}';
+
+interface JSONTest {
+  name: string;
+  data: number;
 }
 
-type CalculateRT = ReturnType<typeof calculate>;
+const objFromJson: JSONTest = JSON.parse(jsonTest);
 
-let anotherRes: CalculateRT = 5;
+let toDoList: ToDo[] = [];
 
-type CalculatePT = Parameters<typeof calculate>[0];
-type PT1 = Parameters<(a: number) => number>;
-type PT2 = Parameters<<T>(a: T) => T>;
-
-class Example {
-  constructor(a: number) {}
+interface ToDo {
+  userId: number;
+  id: number;
+  title: string;
+  complete: boolean;
 }
 
-type T0 = ConstructorParameters<typeof Example>;
+fetch("https://jsonplaceholder.typicode.com/todos/1")
+  .then((response) => response.json())
+  .then((json) => {
+    if ("id" in json) {
+      toDoList.push(json);
+    } else if (Array.isArray(json)) {
+      toDoList = json;
+    } else {
+      console.log(`${json} - is a string`);
+    }
+    console.log(toDoList);
+  });
+
+const promise = new Promise<string>((resolve, reject) => {
+  resolve("Test");
+});
+
+promise.then((value) => {
+  console.log(value.toLowerCase());
+});
