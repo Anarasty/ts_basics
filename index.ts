@@ -879,44 +879,62 @@
 //   role: "admin",
 // };
 
-type Currencies = {
-  usa: "usd";
-  ukraine: "uah";
-  china: "cny";
-  kz: "tenge";
-};
+// type Currencies = {
+//   usa: "usd";
+//   ukraine: "uah";
+//   china: "cny";
+//   kz: "tenge";
+// };
 
-type CreateCustomCurr<T> = {
-  [P in keyof T as `custom${Capitalize<string & P>}`]: string;
-};
+// type CreateCustomCurr<T> = {
+//   [P in keyof T as `custom${Capitalize<string & P>}`]: string;
+// };
 
-type CurrWithoutUSA = Omit<Currencies, "usa">; // исключение
-type CurrUSAAndUkraine = Pick<Currencies, "usa" | "ukraine">; // фильтрация по свойству
-type CountriesWithoutUSA = Exclude<keyof Currencies, "usa">;
+// type CurrWithoutUSA = Omit<Currencies, "usa">; // исключение
+// type CurrUSAAndUkraine = Pick<Currencies, "usa" | "ukraine">; // фильтрация по свойству
+// type CountriesWithoutUSA = Exclude<keyof Currencies, "usa">;
 
-type FadeType = Exclude<MyAnimation, "swipe">; // удаление из union type
-type SwipeType = Extract<MyAnimation | Direction, "swipe">; // выбор подходящего типа
+// type FadeType = Exclude<MyAnimation, "swipe">; // удаление из union type
+// type SwipeType = Extract<MyAnimation | Direction, "swipe">; // выбор подходящего типа
 
-type PlayerNames = "alex" | "john";
-type CustomCurrencies = CreateCustomCurr<Currencies>;
-type GameDataCurr = Record<PlayerNames, CustomCurrencies>;
+// type PlayerNames = "alex" | "john";
+// type CustomCurrencies = CreateCustomCurr<Currencies>;
+// type GameDataCurr = Record<PlayerNames, CustomCurrencies>;
 
-const gameData: GameDataCurr = {
-  alex: {
-    customChina: "111",
-    customKz: "222",
-    customUkraine: "333",
-    customUsa: "444",
-  },
-  john: {
-    customChina: "111",
-    customKz: "222",
-    customUkraine: "333",
-    customUsa: "444",
-  },
-};
+// const gameData: GameDataCurr = {
+//   alex: {
+//     customChina: "111",
+//     customKz: "222",
+//     customUkraine: "333",
+//     customUsa: "444",
+//   },
+//   john: {
+//     customChina: "111",
+//     customKz: "222",
+//     customUkraine: "333",
+//     customUsa: "444",
+//   },
+// };
 
-type MyAnimation = "fade" | "swipe";
-type Direction = "in" | "out";
+// type MyAnimation = "fade" | "swipe";
+// type Direction = "in" | "out";
 
-type MyNewAnimation = `${MyAnimation}${Capitalize<Direction>}`;
+// type MyNewAnimation = `${MyAnimation}${Capitalize<Direction>}`;
+
+function calculate(a: number, b: number): number {
+  return a * b;
+}
+
+type CalculateRT = ReturnType<typeof calculate>;
+
+let anotherRes: CalculateRT = 5;
+
+type CalculatePT = Parameters<typeof calculate>[0];
+type PT1 = Parameters<(a: number) => number>;
+type PT2 = Parameters<<T>(a: T) => T>;
+
+class Example {
+  constructor(a: number) {}
+}
+
+type T0 = ConstructorParameters<typeof Example>;
