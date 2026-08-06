@@ -1003,9 +1003,10 @@
 
 //! CLASSES
 
-class Box {
+class Box<T> {
   width: number;
   height: number;
+  volume!: string;
 
   constructor(width: number) {
     this.width = width;
