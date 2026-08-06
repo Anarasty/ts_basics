@@ -978,25 +978,49 @@
 //   console.log(value.toLowerCase());
 // });
 
-type FromPromise = Awaited<Promise<Promise<number>>>;
+// type FromPromise = Awaited<Promise<Promise<number>>>;
 
-interface User {
-  name: string;
+// interface User {
+//   name: string;
+// }
+
+// async function fetchUsers(): Promise<User[]> {
+//   const users: User[] = [
+//     {
+//       name: "Alex",
+//     },
+//   ];
+
+//   return users;
+// }
+
+// const users = fetchUsers();
+
+// type FetchUsersReturnType = Awaited<ReturnType<typeof fetchUsers>>;
+
+// type UnwrappedPromise<T> = T extends Promise<infer Return> ? Return : T;
+// type FetchDataReturnType = UnwrappedPromise<ReturnType<typeof fetchUsers>>;
+
+//! CLASSES
+
+class Box {
+  width: number;
+  height: number;
+
+  constructor(width: number) {
+    this.width = width;
+    this.height = 500;
+  }
 }
 
-async function fetchUsers(): Promise<User[]> {
-  const users: User[] = [
-    {
-      name: "Alex",
-    },
-  ];
+const firstBox = new Box(250);
+console.log(firstBox);
 
-  return users;
+class User {
+  name!: string;
 }
 
-const users = fetchUsers();
+const ivan = new User();
+ivan.name = "Ivan";
 
-type FetchUsersReturnType = Awaited<ReturnType<typeof fetchUsers>>;
-
-type UnwrappedPromise<T> = T extends Promise<infer Return> ? Return : T;
-type FetchDataReturnType = UnwrappedPromise<ReturnType<typeof fetchUsers>>;
+console.log(ivan);

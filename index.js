@@ -737,18 +737,61 @@
 //   constructor(a: number) {}
 // }
 // type T0 = ConstructorParameters<typeof Example>;
-const jsonTest = '{"name": "Test", "data": "dadaaad"}';
-const objFromJson = JSON.parse(jsonTest);
-let toDoList = [];
-fetch("https://jsonplaceholder.typicode.com/todos/1")
-  .then((response) => response.json())
-  .then((json) => {
-    if ("id" in json) {
-      toDoList.push(json);
-    } else if (Array.isArray(json)) {
-      toDoList = json;
-    } else {
-      console.log(`${json} - is a string`);
+// const jsonTest = '{"name": "Test", "data": "dadaaad"}';
+// interface JSONTest {
+//   name: string;
+//   data: number;
+// }
+// const objFromJson: JSONTest = JSON.parse(jsonTest);
+// let toDoList: ToDo[] = [];
+// interface ToDo {
+//   userId: number;
+//   id: number;
+//   title: string;
+//   complete: boolean;
+// }
+// fetch("https://jsonplaceholder.typicode.com/todos/1")
+//   .then((response) => response.json())
+//   .then((json) => {
+//     if ("id" in json) {
+//       toDoList.push(json);
+//     } else if (Array.isArray(json)) {
+//       toDoList = json;
+//     } else {
+//       console.log(`${json} - is a string`);
+//     }
+//     console.log(toDoList);
+//   });
+// const promise = new Promise<string>((resolve, reject) => {
+//   resolve("Test");
+// });
+// promise.then((value) => {
+//   console.log(value.toLowerCase());
+// });
+// type FromPromise = Awaited<Promise<Promise<number>>>;
+// interface User {
+//   name: string;
+// }
+// async function fetchUsers(): Promise<User[]> {
+//   const users: User[] = [
+//     {
+//       name: "Alex",
+//     },
+//   ];
+//   return users;
+// }
+// const users = fetchUsers();
+// type FetchUsersReturnType = Awaited<ReturnType<typeof fetchUsers>>;
+// type UnwrappedPromise<T> = T extends Promise<infer Return> ? Return : T;
+// type FetchDataReturnType = UnwrappedPromise<ReturnType<typeof fetchUsers>>;
+//! CLASSES
+class Box {
+    width;
+    height;
+    constructor(width) {
+        this.width = width;
+        this.height = 500;
     }
-    console.log(toDoList);
-  });
+}
+const firstBox = new Box(250);
+console.log(firstBox);
