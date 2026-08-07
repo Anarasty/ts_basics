@@ -1005,7 +1005,7 @@
 
 class Box<T> {
   width: number;
-  height: number;
+  height!: 500;
   volume: number | undefined;
   content: string | undefined;
 
@@ -1013,7 +1013,6 @@ class Box<T> {
     this.width = width;
     this.volume = volume;
     this.content = content;
-    this.height = 500;
   }
 
   calculateVolume(): void {
@@ -1059,3 +1058,15 @@ console.log(firstBox.boxContent);
 // ivan.name = "Ivan";
 
 // console.log(ivan);
+
+class Styles {
+  [s: string]: string | ((s: string) => boolean);
+
+  // method() { //!Error, func void
+
+  // }
+}
+
+const style = new Styles();
+style.color = "red";
+style.font = "Roboto";
