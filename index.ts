@@ -1106,26 +1106,70 @@
 
 // new PresentBox("red", 500).contented("TV", "Gift");
 
-interface IUser {
-  login: string;
-  password: string;
-  token?: number;
-}
+// interface IUser {
+//   login: string;
+//   password: string;
+//   token?: number;
+// }
 
-interface IValidation {
-  valid: boolean;
-  isValid: (data: string) => boolean;
-}
+// interface IValidation {
+//   valid: boolean;
+//   isValid: (data: string) => boolean;
+// }
 
-class UserForm implements IUser, IValidation {
-  login!: string;
-  password!: string;
-  valid: boolean = false;
-  token!: number;
+// class UserForm implements IUser, IValidation {
+//   login!: string;
+//   password!: string;
+//   valid: boolean = false;
+//   token!: number;
 
-  isValid(login: string) {
-    return login.length > 3;
+//   isValid(login: string) {
+//     return login.length > 3;
+//   }
+// }
+
+// new UserForm().token;
+
+class Player {
+  private login!: string;
+  private _password!: string;
+  public server!: string;
+  protected consent!: boolean;
+
+  get password() {
+    return this._password;
+  }
+
+  set password(newPass: string) {
+    //validation...
+    this._password = newPass;
   }
 }
 
-new UserForm().token;
+class CompetitvePlayer extends Player {
+  rank!: number;
+
+  isConsented() {
+    this.consent ? "Yes" : "No";
+  }
+}
+
+const player = new CompetitvePlayer();
+player.password = "adasdsdd";
+
+// class User {
+//   public email: string;
+//   public name: string;
+
+//   constructor(email: string, name: string) {
+//     this.email = email;
+//     this.name = name;
+//   }
+// }
+
+// class User {
+//   constructor(
+//     public email: string,
+//     public name: string,
+//   ) {}
+// }
