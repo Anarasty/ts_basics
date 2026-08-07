@@ -1003,9 +1003,9 @@
 
 //! CLASSES
 
-class Box<T> {
+class Box {
   width: number;
-  height!: 500;
+  height!: number;
   volume: number | undefined;
   content: string | undefined;
 
@@ -1013,6 +1013,7 @@ class Box<T> {
     this.width = width;
     this.volume = volume;
     this.content = content;
+    this.height = 500;
   }
 
   calculateVolume(): void {
@@ -1034,12 +1035,19 @@ class Box<T> {
     }
   }
 
-  get boxContent() {
-    return this.content;
-  }
+  // get boxContent() {
+  //   return this.content;
+  // }
 
-  set boxContent(value) {
-    this.content = `Date: ${new Date().toTimeString()}, Content: ${value}`;
+  // set boxContent(value) {
+  //   this.content = `Date: ${new Date().toTimeString()}, Content: ${value}`;
+  // }
+
+  async contented(value: string) {
+    const date = await new Date().toTimeString();
+    this.content = `Date: ${date}, Content: ${value}`;
+    console.log(this.content);
+    // return this.content;
   }
 }
 
@@ -1047,8 +1055,8 @@ const firstBox = new Box(250);
 // console.log(firstBox.calculateVolume());
 firstBox.volume = 5000;
 // console.log(firstBox.checkBoxSize(300));
-console.log((firstBox.boxContent = "Test"));
-console.log(firstBox.boxContent);
+// console.log((firstBox.boxContent = "Test"));
+// console.log(firstBox.boxContent);
 
 // class User {
 //   name!: string;
@@ -1070,3 +1078,30 @@ class Styles {
 const style = new Styles();
 style.color = "red";
 style.font = "Roboto";
+
+class PresentBox extends Box {
+  wrap: string;
+  height: number = 600;
+
+  constructor(wrap: string, width: number) {
+    super(width);
+    this.wrap = wrap;
+  }
+
+  override async contented(value: string, text?: string) {
+    const date = await new Date().toTimeString();
+
+    if (!text) {
+      super.contented(value);
+    } else {
+      this.content = `Date: ${date}, Content: ${value}, Text: ${
+        text ? text : "No text"
+      }`;
+    }
+
+    console.log(this.content);
+    // return this.content;
+  }
+}
+
+new PresentBox("red", 500).contented("TV", "Gift");
