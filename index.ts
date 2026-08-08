@@ -1142,13 +1142,13 @@ class Player {
   public server!: string;
   protected consent!: boolean;
 
+  constructor(login: string) {
+    this.#login = login;
+  }
+
   static {
     Player.game = setName();
   }
-
-  // constructor(game: string) {
-  //   Player.game = game;
-  // }
 
   get password() {
     return this._password;
@@ -1162,12 +1162,30 @@ class Player {
   static getGameName() {
     return Player.game;
   }
+
+  logIn = () => {
+    return `Player ${this.#login} is online!`;
+  };
+
+  connect() {
+    //Do smth
+    return this;
+  }
+
+  isPro(): this is CompetitvePlayer {
+    return this instanceof CompetitvePlayer;
+  }
 }
 
-new Player();
-new Player();
-new Player();
-console.log(Player.getGameName());
+const player = new Player("test");
+console.log(player.connect().logIn());
+
+const test = player.logIn.bind(player);
+test();
+// new Player();
+// new Player();
+// new Player();
+// console.log(Player.getGameName());
 
 // const testPlayer = new Player();
 // testPlayer.#login //! Error
@@ -1175,13 +1193,20 @@ console.log(Player.getGameName());
 class CompetitvePlayer extends Player {
   rank!: number;
 
-  isConsented() {
+  checkLogin() {
+    return this.logIn();
+  }
+
+  private isConsented() {
     this.consent ? "Yes" : "No";
   }
 }
 
-// const player = new CompetitvePlayer();
-// player.password = "adasdsdd";
+const player2 = new CompetitvePlayer("Test2");
+console.log(player2.connect().logIn());
+
+const somePlayer: Player | CompetitvePlayer = new CompetitvePlayer("Test3");
+somePlayer.isPro() ? console.log(somePlayer) : console.log(somePlayer);
 
 // class User {
 //   public email: string;
