@@ -1131,7 +1131,7 @@
 // new UserForm().token;
 
 class Player {
-  private login!: string;
+  #login!: string;
   private _password!: string;
   public server!: string;
   protected consent!: boolean;
@@ -1145,6 +1145,9 @@ class Player {
     this._password = newPass;
   }
 }
+
+const testPlayer = new Player()
+// testPlayer.#login //! Error
 
 class CompetitvePlayer extends Player {
   rank!: number;
