@@ -1130,11 +1130,25 @@
 
 // new UserForm().token;
 
+function setName() {
+  return "COD";
+}
+
 class Player {
+  private static game: string = "COD";
+
   #login!: string;
   private _password!: string;
   public server!: string;
   protected consent!: boolean;
+
+  static {
+    Player.game = setName();
+  }
+
+  // constructor(game: string) {
+  //   Player.game = game;
+  // }
 
   get password() {
     return this._password;
@@ -1144,9 +1158,18 @@ class Player {
     //validation...
     this._password = newPass;
   }
+
+  static getGameName() {
+    return Player.game;
+  }
 }
 
-const testPlayer = new Player()
+new Player();
+new Player();
+new Player();
+console.log(Player.getGameName());
+
+// const testPlayer = new Player();
 // testPlayer.#login //! Error
 
 class CompetitvePlayer extends Player {
@@ -1157,8 +1180,8 @@ class CompetitvePlayer extends Player {
   }
 }
 
-const player = new CompetitvePlayer();
-player.password = "adasdsdd";
+// const player = new CompetitvePlayer();
+// player.password = "adasdsdd";
 
 // class User {
 //   public email: string;
