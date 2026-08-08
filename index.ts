@@ -1130,97 +1130,118 @@
 
 // new UserForm().token;
 
-function setName() {
-  return "COD";
-}
+// function setName() {
+//   return "COD";
+// }
 
-class Player {
-  private static game: string = "COD";
+// class Player {
+//   private static game: string = "COD";
 
-  #login!: string;
-  private _password!: string;
-  public server!: string;
-  protected consent!: boolean;
+//   #login!: string;
+//   private _password!: string;
+//   public server!: string;
+//   protected consent!: boolean;
 
-  constructor(login: string) {
-    this.#login = login;
-  }
+//   constructor(login: string) {
+//     this.#login = login;
+//   }
 
-  static {
-    Player.game = setName();
-  }
+//   static {
+//     Player.game = setName();
+//   }
 
-  get password() {
-    return this._password;
-  }
+//   get password() {
+//     return this._password;
+//   }
 
-  set password(newPass: string) {
-    //validation...
-    this._password = newPass;
-  }
+//   set password(newPass: string) {
+//     //validation...
+//     this._password = newPass;
+//   }
 
-  static getGameName() {
-    return Player.game;
-  }
+//   static getGameName() {
+//     return Player.game;
+//   }
 
-  logIn = () => {
-    return `Player ${this.#login} is online!`;
-  };
+//   logIn = () => {
+//     return `Player ${this.#login} is online!`;
+//   };
 
-  connect() {
-    //Do smth
-    return this;
-  }
+//   connect() {
+//     //Do smth
+//     return this;
+//   }
 
-  isPro(): this is CompetitvePlayer {
-    return this instanceof CompetitvePlayer;
-  }
-}
-
-const player = new Player("test");
-console.log(player.connect().logIn());
-
-const test = player.logIn.bind(player);
-test();
-// new Player();
-// new Player();
-// new Player();
-// console.log(Player.getGameName());
-
-// const testPlayer = new Player();
-// testPlayer.#login //! Error
-
-class CompetitvePlayer extends Player {
-  rank!: number;
-
-  checkLogin() {
-    return this.logIn();
-  }
-
-  private isConsented() {
-    this.consent ? "Yes" : "No";
-  }
-}
-
-const player2 = new CompetitvePlayer("Test2");
-console.log(player2.connect().logIn());
-
-const somePlayer: Player | CompetitvePlayer = new CompetitvePlayer("Test3");
-somePlayer.isPro() ? console.log(somePlayer) : console.log(somePlayer);
-
-// class User {
-//   public email: string;
-//   public name: string;
-
-//   constructor(email: string, name: string) {
-//     this.email = email;
-//     this.name = name;
+//   isPro(): this is CompetitvePlayer {
+//     return this instanceof CompetitvePlayer;
 //   }
 // }
 
-// class User {
-//   constructor(
-//     public email: string,
-//     public name: string,
-//   ) {}
+// const player = new Player("test");
+// console.log(player.connect().logIn());
+
+// const test = player.logIn.bind(player);
+// test();
+// // new Player();
+// // new Player();
+// // new Player();
+// // console.log(Player.getGameName());
+
+// // const testPlayer = new Player();
+// // testPlayer.#login //! Error
+
+// class CompetitvePlayer extends Player {
+//   rank!: number;
+
+//   checkLogin() {
+//     return this.logIn();
+//   }
+
+//   private isConsented() {
+//     this.consent ? "Yes" : "No";
+//   }
 // }
+
+// const player2 = new CompetitvePlayer("Test2");
+// console.log(player2.connect().logIn());
+
+// const somePlayer: Player | CompetitvePlayer = new CompetitvePlayer("Test3");
+// somePlayer.isPro() ? console.log(somePlayer) : console.log(somePlayer);
+
+// // class User {
+// //   public email: string;
+// //   public name: string;
+
+// //   constructor(email: string, name: string) {
+// //     this.email = email;
+// //     this.name = name;
+// //   }
+// // }
+
+// // class User {
+// //   constructor(
+// //     public email: string,
+// //     public name: string,
+// //   ) {}
+// // }
+
+interface IEngine {
+  model: string;
+  capacity: number;
+  startEngine: (time: Date) => string;
+}
+
+abstract class AbstractVehicle {
+  model!: string;
+  capacity!: number;
+  abstract startEngine: (time: Date) => string;
+  stopEngine(time: Date): string {
+    return "Engine Stopped";
+  }
+}
+
+class Vehicle extends AbstractVehicle {
+  startEngine = (time: Date) => {
+    return "Started";
+  };
+}
